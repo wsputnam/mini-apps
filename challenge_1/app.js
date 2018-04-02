@@ -37,8 +37,8 @@ function playerMark() {
 }
 
 function isWinner(marksArray, name) {
-    var checks = 0;
     for (i = 0; i < winningCombos.length; i++) {
+        var checks = 0;
         for (var j = 0; j < winningCombos[i].length; j++) {
             if (marksArray.indexOf(winningCombos[i][j]) !== -1) {
                 checks++;
@@ -57,4 +57,5 @@ function playNewGame() {
         squares[i].innerHTML = '';
         squares[i].style.removeProperty('background');
     }
+    window.location.reload(true);
 }

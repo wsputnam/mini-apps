@@ -1,9 +1,10 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 
 const port = 3000;
 
 const app = express();
+
+const rows = [];
 
 app.use(express.static('client'));
 
@@ -22,10 +23,15 @@ app.use(express.static('./app.js'));
 app.get('*', function (req, res) {
     res.send('index.html');
 });
+app.get('/load', function(req, res) {
+    console.log(rows);
+    res.json(rows);
+})
 
 app.post('*', function (req, res) {
     console.log(req.body.item)
-    res.send(req.body.item);
+    res.setHeader('Content-Type', 'application/json');
+    rows.push(req.body.item);
 });
 
 

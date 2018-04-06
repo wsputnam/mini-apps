@@ -9,6 +9,7 @@ const rows = [];
 app.use(express.static('client'));
 
 // body parser
+// data not coming back as expected
 app.use(function (req, res, next) {
     var data = "";
     req.on('data', function (chunk) { data += chunk })
